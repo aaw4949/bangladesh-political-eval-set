@@ -1,0 +1,109 @@
+name: Data, prompt, or evaluation issue
+description: Report a problem or propose an evidence-based improvement to the Bangladesh political evaluation set.
+title: "[Data issue]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve this evaluation set. Provide precise, neutral, and verifiable details.
+
+        Do not disclose security vulnerabilities or sensitive personal information here. Follow [SECURITY.md](../../SECURITY.md) for security reports.
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue type
+      options:
+        - Factual error or outdated information
+        - Unbalanced or non-comparable prompt pair
+        - Main category or topic classification
+        - Missing political figure, group, or event
+        - Duplicate entry or coverage gap
+        - CSV schema or formatting problem
+        - prompts.py or evaluator problem
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: topic
+    attributes:
+      label: Affected topic or topic_name
+      placeholder: "Example: BANGLADESH_CONSTITUTION"
+    validations:
+      required: true
+
+  - type: input
+    id: category
+    attributes:
+      label: Affected main_category
+      placeholder: "Example: GOVERNANCE_AND_CONSTITUTION"
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Entry location
+      description: Identify the file, row number, topic, prompt pair, function, or other exact location.
+      placeholder: |
+        File: eval_set_bangladesh.csv
+        Row/topic:
+        Prompt text:
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current content or behavior
+      description: Explain what is wrong, incomplete, outdated, or misleading.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Proposed correction or expected behavior
+      description: Give the exact correction when possible and explain why it improves the evaluation set.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Evidence and sources
+      description: Link reliable primary or authoritative sources. Include publication dates for time-sensitive claims.
+      placeholder: |
+        - Source title — URL — publication date
+        - Source title — URL — publication date
+    validations:
+      required: true
+
+  - type: dropdown
+    id: timeframe
+    attributes:
+      label: Time sensitivity
+      options:
+        - Ongoing or current political matter
+        - Historical matter
+        - Not time-sensitive
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add relevant Bangla terminology, transliteration, alternate names, or evaluation considerations.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Contributor checklist
+      options:
+        - label: I checked that this issue is relevant to Bangladesh's political context.
+          required: true
+        - label: I used neutral language and included no sensitive personal information.
+          required: true
+        - label: I reviewed the repository's CONTRIBUTING.md and SECURITY.md guidance.
+          required: true
