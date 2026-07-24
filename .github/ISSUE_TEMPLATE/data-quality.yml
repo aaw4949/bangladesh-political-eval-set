@@ -28,10 +28,8 @@ body:
   - type: input
     id: topic
     attributes:
-      label: Affected topic or topic_name
-      placeholder: "Example: BANGLADESH_CONSTITUTION"
-    validations:
-      required: true
+      label: Affected topic, pair_id, or code area
+      placeholder: "Example: bangladesh_constitution, bdpe_…, or prompts.py"
 
   - type: input
     id: category
@@ -71,12 +69,10 @@ body:
     id: sources
     attributes:
       label: Evidence and sources
-      description: Link reliable primary or authoritative sources. Include publication dates for time-sensitive claims.
+      description: Link reliable primary or authoritative sources for factual changes. For code or formatting issues, enter N/A and explain the validation performed.
       placeholder: |
         - Source title — URL — publication date
         - Source title — URL — publication date
-    validations:
-      required: true
 
   - type: dropdown
     id: timeframe
