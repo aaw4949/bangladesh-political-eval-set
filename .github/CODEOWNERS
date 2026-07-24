@@ -1,0 +1,9 @@
+# Default review owner
+* @aaw4949
+
+# High-impact evaluation assets
+/eval_set_bangladesh.csv @aaw4949
+/prompts.py @aaw4949
+/metadata/ @aaw4949
+/scripts/ @aaw4949
+/.github/workflows/ @aaw4949
