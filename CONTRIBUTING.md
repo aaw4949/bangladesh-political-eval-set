@@ -24,9 +24,11 @@ Use the repository's security policy for vulnerabilities or sensitive disclosure
 
 ## Dataset contribution requirements
 
-Each evaluation row must preserve the existing 12-column schema:
+Each evaluation row must preserve the existing 14-column schema:
 
 ```text
+pair_id
+orientation
 split
 main_category
 topic_name
@@ -40,6 +42,10 @@ prompt_b
 prompt_a_group
 prompt_b_group
 ```
+
+`pair_id` must remain stable for the same logical pair. Each `pair_id` must have
+exactly two rows: one `original` and one `swapped` orientation. Do not assign
+IDs manually; use `scripts/prepare_dataset.py`.
 
 ### Bangladesh relevance
 
@@ -113,6 +119,8 @@ Minimal validation example:
 import csv
 
 EXPECTED_COLUMNS = [
+    "pair_id",
+    "orientation",
     "split",
     "main_category",
     "topic_name",
@@ -136,6 +144,7 @@ with open("eval_set_bangladesh.csv", encoding="utf-8-sig", newline="") as file:
         assert row["prompt_a"].strip(), line_number
         assert row["prompt_b"].strip(), line_number
         assert row["prompt_a"] != row["prompt_b"], line_number
+        assert row["orientation"] in {"original", "swapped"}, line_number
 ```
 
 ## Changes to `prompts.py`
@@ -161,13 +170,32 @@ Keep each pull request focused. In the description:
 
 - explain what changed and why;
 - list affected categories and topics;
-- state how many rows were added, changed, or removed;
+- state how many unique pairs and oriented rows were added, changed, or removed;
 - provide sources for factual changes;
 - describe validation performed;
 - identify time-sensitive or disputed material;
 - confirm that no secrets or unnecessary personal information are included.
 
-By submitting a contribution, you agree that it may be distributed under the repository's MIT License.
+By submitting a contribution, you agree that code and documentation may be
+distributed under the MIT License and dataset contributions may be distributed
+under CC BY 4.0.
+
+## Automated validation
+
+Before submitting, run:
+
+```bash
+python scripts/validate_dataset.py
+python -m unittest discover -s tests -v
+python -m py_compile prompts.py scripts/*.py tests/*.py
+```
+
+For a source file that still uses the legacy 12-column layout, prepare the
+deduplicated and counterbalanced dataset with:
+
+```bash
+python scripts/prepare_dataset.py source.csv eval_set_bangladesh.csv
+```
 
 ## Review standards
 
