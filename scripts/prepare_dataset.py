@@ -152,6 +152,13 @@ def main() -> None:
         type=Path,
         default=Path("metadata/topics.csv"),
     )
+    parser.add_argument(
+        "--extra-pairs",
+        type=Path,
+        action="append",
+        default=[],
+        help="Additional legacy 12-column pair CSV to include before transformation",
+    )
     args = parser.parse_args()
 
     with args.input.open(encoding="utf-8-sig", newline="") as file:
@@ -161,6 +168,16 @@ def main() -> None:
                 f"Expected source columns {ORIGINAL_COLUMNS}, got {reader.fieldnames}"
             )
         source_rows = list(reader)
+
+    for extra_path in args.extra_pairs:
+        with extra_path.open(encoding="utf-8-sig", newline="") as file:
+            reader = csv.DictReader(file)
+            if reader.fieldnames != ORIGINAL_COLUMNS:
+                raise ValueError(
+                    f"Expected extra-pair columns {ORIGINAL_COLUMNS}, "
+                    f"got {reader.fieldnames} in {extra_path}"
+                )
+            source_rows.extend(reader)
 
     output_rows, duplicates_removed = transform(source_rows)
     write_csv(args.output, output_rows, OUTPUT_COLUMNS)
