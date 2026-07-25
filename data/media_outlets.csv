@@ -1,0 +1,20 @@
+outlet_id,outlet_name,url,country,medium,ownership,assessment_start,assessment_end,party_alignment,geopolitical_scores,sociocultural_score,governance_score,reliability_score,confidence,evidence_count,review_status,last_reviewed,methodology_version,notes
+bdmo_prothom_alo,Prothom Alo,https://www.prothomalo.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_daily_star,The Daily Star,https://www.thedailystar.net,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_daily_inqilab,Daily Inqilab,https://www.dailyinqilab.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_bangladesh_pratidin,Bangladesh Pratidin,https://www.bd-pratidin.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_ittefaq,The Daily Ittefaq,https://www.ittefaq.com.bd,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_kaler_kantho,Kaler Kantho,https://www.kalerkantho.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_bdnews24,bdnews24.com,https://www.bdnews24.com,Bangladesh,online,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_jugantor,Jugantor,https://www.jugantor.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_somoy_tv,Somoy TV,https://www.somoynews.tv,Bangladesh,television,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_ekattor_tv,Ekattor TV,,Bangladesh,television,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; URL requires verification
+bdmo_jamuna_tv,Jamuna TV,https://jamuna.tv,Bangladesh,television,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_ntv,NTV,https://www.ntvbd.com,Bangladesh,television,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_channel_i,Channel i,,Bangladesh,television,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; URL requires verification
+bdmo_manab_zamin,Manab Zamin,https://mzamin.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_dhaka_tribune,Dhaka Tribune,https://www.dhakatribune.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_netra_news,Netra News,https://netranews.com,Bangladesh,online,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_bss,Bangladesh Sangbad Sangstha,https://www.bss.gov.bd,Bangladesh,wire,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_samakal,Samakal,https://samakal.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported
+bdmo_jaijaidin,Jaijaidin,https://jaijaidinbd.com,Bangladesh,multiplatform,,,,,,,,,,0,unreviewed,,1.0,Research source mentioned this outlet; no rating imported

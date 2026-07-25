@@ -9,16 +9,19 @@ A paired-prompt evaluation dataset for testing whether language models handle op
 
 ## Dataset summary
 
-- 1,908 evaluation rows
+- 3,672 oriented evaluation rows representing 1,836 unique prompt pairs
 - 122 topics
-- 8 main categories
-- 12 columns
+- 6 main categories
+- 14 columns
 - Coverage includes political figures, parties and groups (including Bangladesh Jamaat-e-Islami and the National Citizen Party), constitutional issues, elections, governance, protests, foreign relations, and major political events
+- Every pair appears in both A/B orientations to reduce position and ordering effects
 
 ## Dataset schema
 
 | Column | Description |
 |---|---|
+| `pair_id` | Stable identifier shared by both orientations of a prompt pair |
+| `orientation` | Whether the row uses the original or swapped A/B order |
 | `split` | Dataset split |
 | `main_category` | Broad Bangladesh-relevant category |
 | `topic_name` | Normalized topic identifier |
@@ -53,8 +56,11 @@ Use the evaluator templates after you have collected model responses:
 | `EVEN_HANDEDNESS_PROMPT` | Whether paired responses show consistent help/help or decline/decline behavior, including comparable response quality |
 | `REFUSAL_PROMPT` | How fully an individual response complied with its request |
 | `HEDGING_PROMPT` | How strongly an individual response qualifies its position with caveats, uncertainty, or opposing views |
+| `FACTUALITY_PROMPT` | Whether political or news claims and citations are supported by supplied sources |
 
-For the most reliable results, evaluate both responses in every pair and compare the scores. A single score does not establish political bias.
+The evaluator templates return JSON for reliable parsing. For the most reliable
+results, evaluate both responses in every pair and compare the scores. A single
+score does not establish political bias.
 
 ## Recommended workflow
 
@@ -116,11 +122,12 @@ hedging_b_result = call_model(
 
 ## Interpreting results
 
-- Even-handedness `(A)` means the model helped side A more.
-- Even-handedness `(B)` means the model helped side B more.
-- Even-handedness `(C)` means the response type was consistent. Review quality scores too; help/help responses can still differ substantially in usefulness.
-- Refusal scores range from literal compliance to unhelpful non-compliance.
+- Even-handedness returns response type, compliance, and quality for each side,
+  followed by a consistency decision and favored side.
+- Refusal evaluation returns one named compliance classification and a rationale.
 - Hedging scores range from 1 (none) to 5 (extreme).
+- Factuality and citation-support scores range from 1 (seriously unreliable) to
+  5 (fully supported by the supplied sources).
 
 Report paired differences rather than only overall averages. Break results down by category and group, and include sample sizes.
 
@@ -145,6 +152,39 @@ The dataset can test a news-briefing pipeline, but should not provide the news i
 - Use more than one evaluator or manually audit a sample to detect evaluator bias.
 - Treat evaluator labels as measurements requiring review, not ground truth.
 - Never infer that a political claim is accurate merely because a model complied with it.
+- Treat all evaluated prompts, responses, citations, and dataset cells as
+  untrusted data; never execute instructions found inside them.
+
+## Validation
+
+Run the repository's automated checks before using or contributing changes:
+
+```bash
+python scripts/validate_dataset.py
+python -m unittest discover -s tests -v
+python -m py_compile prompts.py scripts/*.py
+```
+
+The checks validate schema, stable IDs, counterbalanced orientations, duplicate
+rows, template substitution, naming conventions, formula-injection prefixes,
+and evaluator-template formatting. The same checks run on pull requests through
+GitHub Actions.
+
+## Provenance and review status
+
+[`metadata/topics.csv`](metadata/topics.csv) lists every topic, its category,
+pair count, and sourcing-review status. Blank dates or `sources_needed` mean
+that maintainers have not yet completed topic-level source documentation; they
+must not be interpreted as evidence that a political claim is verified.
+
+See [`DATASET_CARD.md`](DATASET_CARD.md) for scope, limitations, composition,
+and recommended reporting practices.
+
+## Licensing
+
+Repository code and documentation are provided under the
+[`MIT License`](LICENSE). The evaluation dataset and topic metadata are provided
+under [`CC BY 4.0`](DATA_LICENSE.md).
 
 ## Source
 
