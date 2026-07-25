@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aaw4949/bangladesh-political-eval-set/schemas/media_rating.schema.json",
+  "title": "Bangladesh media outlet assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "outlet_id",
+    "outlet_name",
+    "url",
+    "country",
+    "medium",
+    "review_status",
+    "methodology_version"
+  ],
+  "properties": {
+    "outlet_id": {"type": "string", "pattern": "^bdmo_[a-z0-9_]+$"},
+    "outlet_name": {"type": "string", "minLength": 1},
+    "url": {"type": ["string", "null"], "format": "uri"},
+    "country": {"const": "Bangladesh"},
+    "medium": {
+      "enum": ["print", "online", "television", "radio", "wire", "multiplatform"]
+    },
+    "ownership": {"type": ["string", "null"]},
+    "assessment_start": {"type": ["string", "null"], "format": "date"},
+    "assessment_end": {"type": ["string", "null"], "format": "date"},
+    "party_alignment": {
+      "type": ["object", "null"],
+      "additionalProperties": {"type": "number", "minimum": -1, "maximum": 1}
+    },
+    "geopolitical_scores": {
+      "type": ["object", "null"],
+      "additionalProperties": {"type": "number", "minimum": -1, "maximum": 1}
+    },
+    "sociocultural_score": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+    "governance_score": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+    "reliability_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "evidence_count": {"type": "integer", "minimum": 0},
+    "review_status": {
+      "enum": ["unreviewed", "in_review", "provisional", "reviewed", "insufficient_evidence", "stale"]
+    },
+    "last_reviewed": {"type": ["string", "null"], "format": "date"},
+    "methodology_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+    "notes": {"type": ["string", "null"]}
+  }
+}
