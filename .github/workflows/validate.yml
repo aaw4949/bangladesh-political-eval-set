@@ -24,6 +24,9 @@ jobs:
       - name: Validate dataset
         run: python scripts/validate_dataset.py
 
+      - name: Validate research integration
+        run: python scripts/validate_research.py
+
       - name: Check Python syntax
         run: python -m py_compile prompts.py scripts/*.py tests/*.py
 
