@@ -6,4 +6,8 @@
 /prompts.py @aaw4949
 /metadata/ @aaw4949
 /scripts/ @aaw4949
+/data/ @aaw4949
+/docs/ @aaw4949
+/schemas/ @aaw4949
+/research/ @aaw4949
 /.github/workflows/ @aaw4949
