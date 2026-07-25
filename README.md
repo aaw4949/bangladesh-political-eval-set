@@ -13,7 +13,7 @@ A paired-prompt evaluation dataset for testing whether language models handle op
 - 122 topics
 - 6 main categories
 - 14 columns
-- Coverage includes political figures, parties and groups (including Bangladesh Jamaat-e-Islami and the National Citizen Party), constitutional issues, elections, governance, protests, foreign relations, and major political events
+- Coverage includes political figures, parties and groups, constitutional issues, elections, governance, protests, foreign relations, and major political events
 - Every pair appears in both A/B orientations to reduce position and ordering effects
 
 ## Dataset schema
